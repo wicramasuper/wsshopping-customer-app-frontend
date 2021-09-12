@@ -15,3 +15,29 @@ export const displayProductsAll = sortBy =>{
         return response.json();
     }).catch(err =>console.log(err));
 };
+
+export const getAdvertisementList = () => {
+    return fetch (`${ API }/advertisements?sortBy=adStartDate&order=desc&limit=3`, {
+        method : "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
+export const getPromotionList = () => {
+    return fetch (`${ API }/promotions?sortBy=promoStartDate&order=desc&limit=2`, {
+        method : "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
+
