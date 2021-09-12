@@ -5,6 +5,7 @@ import Sidebar from '../core/navbar';
 import Card from './card';
 import CardAd from './cardAd'
 import CardPromo from './cardPromo'
+import Marquee from "react-fast-marquee";
 
 const Home = () => {
 
@@ -57,6 +58,7 @@ const Home = () => {
     };
 
     useEffect(() => {
+        
         loadProductBySell();
         loadProductByArrival();
         loadAdvertisements();
@@ -68,7 +70,22 @@ const Home = () => {
         
 
             <Sidebar>
-            <div>
+
+                      
+                        <h2 className="mb-4">Enjoy Premium Offers !</h2>
+                        <Marquee loop="5" direction="right">
+                        <div className="row">
+                           
+                        {promotions.map((promotion, i) => (
+                            
+                            <CardPromo key={i} item={promotion} />
+                           
+                        ))}
+                        
+     
+                        </div>
+                        </Marquee>
+                        <div>
                
             
                 <h2 className="mb-4">New Arrivals</h2>
@@ -86,17 +103,21 @@ const Home = () => {
             <hr></hr>
             <hr/>
 
+            
             <div>
-                <h2 className="mb-4">Promotions and Advertisements</h2>
+                    
+                <h2 className="mb-4">For You !</h2>
+                <Marquee loop="5">
                     <div className="row">
                         {advertisements.map((advertisement, i) => (
                             <CardAd key={i} item={advertisement} />
                         ))}
-                        {promotions.map((promotion, i) => (
-                            <CardPromo key={i} item={promotion} />
-                        ))}
+                        
                     </div>
+                    </Marquee>
+                    
             </div>
+            
 
             <h2 className="mb-4">Best Selling</h2>
             <div className="row">

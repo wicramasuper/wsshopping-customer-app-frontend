@@ -17,7 +17,7 @@ export const displayProductsAll = sortBy =>{
 };
 
 export const getAdvertisementList = () => {
-    return fetch (`${ API }/advertisements?sortBy=adStartDate&order=desc&limit=3`, {
+    return fetch (`${ API }/advertisements?sortBy=adStartDate&order=desc&limit=6`, {
         method : "GET"
     })
     .then(response => {
@@ -29,7 +29,7 @@ export const getAdvertisementList = () => {
 };
 
 export const getPromotionList = () => {
-    return fetch (`${ API }/promotions?sortBy=promoStartDate&order=desc&limit=2`, {
+    return fetch (`${ API }/promotions?sortBy=promoStartDate&order=desc&limit=4`, {
         method : "GET"
     })
     .then(response => {
