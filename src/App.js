@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import {BrowserRouter,Route} from 'react-router-dom';
+import CreateR from './customer-core/CreateR';
+import EditR from './customer-core/EditR';
+import HomeR from './customer-core/HomeR';
+import NavBar from './customer-core/NavBar';
+import DetailsR from './customer-core/DetailsR';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+render(){
+return (
+<BrowserRouter>
+<div className = "container">
+<NavBar/>
+<Route path = "/" exact component={HomeR}></Route>
+<Route path = "/add" component={CreateR}></Route>
+<Route path = "/edit/:id" component={EditR}></Route>
+<Route path = "/post/:id" component={DetailsR}></Route>
+
+
+</div>
+</BrowserRouter>
+)
 }
-
-export default App;
+}
