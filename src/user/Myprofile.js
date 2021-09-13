@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "./user-core/Layout";
 import { isAuthenticated, deleteUser } from "../Auth/user/user";
 import { Link , Redirect} from "react-router-dom";
@@ -6,6 +6,7 @@ import { Link , Redirect} from "react-router-dom";
 const Myprofile = () => {
 
     const {user: {_id, firstname, lastname, email, phoneno, addressl1, addressl2, city, postalcode, role}} = isAuthenticated();
+    const [success, setSuccess] = useState(false);
     
     
 
@@ -19,7 +20,7 @@ const Myprofile = () => {
 
     const destroy = userId=> {
 
-        var x = window.confirm("Are you sure you want to delete this post ? ");
+        var x = window.confirm("Are you sure you want to delete this Account ? ");
 
 
     if (x === true) {
@@ -27,15 +28,19 @@ const Myprofile = () => {
             if (data.error) {
                 console.log(data.error);
             } else {
-
+                setSuccess(true);
                 console.log("delete");
-                
-                
             }
         });
 
     }
 
+
+    }
+
+    const redirectUser = success => {
+        if(success)
+        return <Redirect to="/Signup" />;
     }
 
     
@@ -94,8 +99,11 @@ const Myprofile = () => {
             </div>
             
             <div style={{marginTop: '10px'}}>
-            <button className="btn btn-danger col-6" style={{marginLeft : '34.8%', width: '30.5%', marginBottom: '40px'}}><span onClick={() => destroy(`${_id}`)} className="badge badge-danger badge=pill p-2" style={{ cursor: "pointer" }}>Delete My Account</span></button>    
+               
+    
+                <button className="btn btn-danger col-6" style={{marginLeft : '34.8%', width: '30.5%', marginBottom: '40px'}}><span onClick={() => destroy(`${_id}`)} className="badge badge-danger badge=pill p-2" style={{ cursor: "pointer" }}>Delete My Account</span></button>   
             </div>
+            {redirectUser(success)}
 
         </Layout>
     );
