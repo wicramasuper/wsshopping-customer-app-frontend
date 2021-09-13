@@ -3,6 +3,7 @@ import Layout from "./user-core/Layout";
 import { isAuthenticated } from "../Auth/user/user";
 import { Link, Redirect } from "react-router-dom";
 import {read, update, updateUser} from './apiUser';
+import Sidebar from '../core/navbar';
 
 const Updateprofile = ({match}) => {
     const [values, setValues] = useState({
@@ -132,6 +133,7 @@ const Updateprofile = ({match}) => {
     );
 
     return (
+        <Sidebar>
         <Layout title="Profile Update"
         description="Update Your Profile"
         className="container-fluid">
@@ -141,6 +143,7 @@ const Updateprofile = ({match}) => {
             {redirectUser(success)}
             
         </Layout>
+        </Sidebar>
     );
 
 };

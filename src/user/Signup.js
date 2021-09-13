@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import Layout from '../user/user-core/Layout';
 import { signup } from "../Auth/user/user";
+import Sidebar from '../core/navbarSign';
 
 const Signup = () => {
 
@@ -130,13 +131,15 @@ const Signup = () => {
 
     //confirm password section I not implement yet
 return (
-    <Layout title="Signup" description="Signup to the site" className="container col-4 offset-md-4">
+    <Sidebar>
+    <Layout title="Signup" description="" className="container col-4 offset-md-4">
 
         {signupForm()}
         {showSuccess()}
         {showError()}
         
     </Layout>
+    </Sidebar>
     );
 
 };

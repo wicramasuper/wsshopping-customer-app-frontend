@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "./user-core/Layout";
 import { isAuthenticated, deleteUser } from "../Auth/user/user";
 import { Link , Redirect} from "react-router-dom";
+import Sidebar from '../core/navbar';
 
 const Myprofile = () => {
 
@@ -46,6 +47,7 @@ const Myprofile = () => {
     
 
     return (
+        <Sidebar>
         <Layout title="My Profile" description={`Hi.. Good Day ${firstname}!`} className="container-fluid">
 
             <div className="card mb-5" style={{marginLeft: '20%', marginRight: '20%'}}>
@@ -106,6 +108,7 @@ const Myprofile = () => {
             {redirectUser(success)}
 
         </Layout>
+        </Sidebar>
     );
 };
 

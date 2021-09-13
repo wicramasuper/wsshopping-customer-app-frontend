@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Redirect, Link } from "react-router-dom";
 import Layout from '../user/user-core/Layout';
+import Sidebar from '../core/navbarSign';
 import { signin, authenticate } from "../Auth/user/user";
 
 const Signin = () => {
@@ -77,20 +78,22 @@ const Signin = () => {
 
     const redirectUser = () => {
         if(redirectToReferrer) {
-            return <Redirect to="/" />
+            return <Redirect to="/home" />
         }
     }
 
     //confirm password section I not implement still yet
 return (
-    <Layout title="Signin" description="Signin to the site" className="container col-4 offset-md-4">
-
+   
+<Sidebar>
+<Layout title="Signin" description="" className="container col-4 offset-md-4">
         {showLoading()}
         {showError()}
         {signupForm()}
         {redirectUser()}
-        
-    </Layout>
+        </Layout>
+        </Sidebar> 
+       
     );
 
 };
